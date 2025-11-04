@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+// MODIFIED: Imported ArrowLeft
+import { ArrowLeft } from "lucide-react";
 
 const PortfolioUpload: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
@@ -18,7 +20,17 @@ const PortfolioUpload: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900 text-gray-900 dark:text-white px-6 md:px-20 py-28">
+    // MODIFIED: Added `relative` and updated background gradient
+    <section className="relative min-h-screen bg-linear-to-b from-emerald-50 to-white dark:from-black dark:to-gray-900 text-gray-900 dark:text-white px-6 md:px-20 py-28">
+      {/* MODIFIED: Added back arrow link */}
+      <a
+        href="/"
+        aria-label="Back to Home"
+        className="absolute top-8 left-8 z-10 text-gray-600 dark:text-gray-400 hover:text-[#00b67f] transition"
+      >
+        <ArrowLeft size={28} />
+      </a>
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,7 +48,8 @@ const PortfolioUpload: React.FC = () => {
         <div
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
-          className="border-2 border-dashed border-[#00b67f] rounded-2xl p-10 bg-white/10 dark:bg-black/20 hover:bg-[#00b67f]/5 transition-all cursor-pointer"
+          // MODIFIED: Updated background to be more airy
+          className="border-2 border-dashed border-[#00b67f] rounded-[7px] p-10 bg-white/30 dark:bg-black/20 hover:bg-[#00b67f]/5 transition-all cursor-pointer"
         >
           <p className="text-[#00b67f] mb-3">Drag & drop your designs here</p>
           <p className="text-gray-400">or</p>
@@ -60,15 +73,17 @@ const PortfolioUpload: React.FC = () => {
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="relative group rounded-xl overflow-hidden border border-white/10"
+                className="relative group rounded-xl overflow-hidden border border-white/10 shadow-md"
               >
                 <img
                   src={URL.createObjectURL(file)}
                   alt={file.name}
                   className="object-cover w-full h-48"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-all">
-                  <p className="text-sm text-white">{file.name}</p>
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-all p-2">
+                  <p className="text-sm text-white text-center break-all">
+                    {file.name}
+                  </p>
                 </div>
               </motion.div>
             ))}

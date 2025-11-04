@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Upload, Image as ImageIcon, DollarSign, Calendar } from "lucide-react";
+import {
+  Upload,
+  DollarSign,
+  Calendar,
+  ArrowLeft,
+} from "lucide-react";
 
 const CustomRequest: React.FC = () => {
   const [preview, setPreview] = useState<string | null>(null);
@@ -19,7 +24,8 @@ const CustomRequest: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 text-center px-4">
+      // MODIFIED: Updated background gradient to match brand
+      <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-b from-emerald-50 to-white dark:from-black dark:to-gray-900 text-center px-4">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,17 +37,38 @@ const CustomRequest: React.FC = () => {
           Your custom design request has been shared with our top designers.
           Expect personalized suggestions soon!
         </p>
+
+        <motion.a
+          href="/"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-10 bg-[#00b67f] text-black font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#00b67f]/90 transition flex items-center gap-2"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          Back to Home
+        </motion.a>
       </div>
     );
   }
 
   return (
-    <section className="flex items-center justify-center min-h-screen bg-gradient-to-br from-white via-gray-100 to-white dark:from-black dark:via-[#0b0b0b] dark:to-black px-6">
+    // MODIFIED: Updated background linear to match brand
+    <section className="relative flex items-center justify-center min-h-screen bg-linear-to-br from-emerald-50 via-white to-emerald-50 dark:from-black dark:via-[#0b0b0b] dark:to-black px-6 py-20">
+      <a
+        href="/"
+        aria-label="Back to Home"
+        className="absolute top-8 left-8 z-10 text-gray-600 dark:text-gray-400 hover:text-[#00b67f] transition"
+      >
+        <ArrowLeft size={28} />
+      </a>
+
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-2xl bg-white/80 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/10 p-8 rounded-3xl shadow-xl"
+        // This glassmorphic card stays the same
+        className="w-full max-w-2xl bg-white/80 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/10 p-8 rounded-[7px] shadow-xl"
       >
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
           Custom Design Request
@@ -114,6 +141,7 @@ const CustomRequest: React.FC = () => {
             <input
               type="date"
               required
+              min={new Date().toISOString().split("T")[0]}
               className="w-full rounded-xl border border-gray-300 dark:border-white/20 bg-transparent p-3 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-[#00b67f] outline-none"
             />
           </div>

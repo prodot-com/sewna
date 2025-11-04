@@ -1,8 +1,9 @@
 import Navbar from '../components/ui/Navbar'
 import HeroSection from '../components/ui/Hero'
-import HowItWorks from '@/components/ui/HowItWorks'
-import TopDesigners from '@/components/ui/TopDesigner'
+import { WobbleCardDemo } from '@/components/ui/WobbleCardDemo'
 import { TestimonialsSection } from '@/components/ui/Testimonial'
+import ContactSection from '@/components/ui/Contact'
+import Footer from '@/components/ui/Footer'
 
 const Home = () => {
   return (
@@ -10,9 +11,9 @@ const Home = () => {
       <Navbar/>
       <HeroSection/>
       <TestimonialsSection/>
-      <HowItWorks/>
-      <TopDesigners/>
-      <div className='w-full min-h-[500px]'></div>
+      <WobbleCardDemo/>
+      <ContactSection/>
+      <Footer/>
     </div>
   )
 }

@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
   return (
     <div
       className="relative flex flex-col md:flex-row items-center justify-between min-h-screen w-full 
-      px-8 md:px-24 bg-linear-to-br from-white via-green-300 to-gray-200 text-black 
+      px-8 md:px-24 bg-linear-to-br from-gray-200 via-green-300 to-gray-200 text-black 
       dark:from-black/55 dark:via-green-900 dark:to-black/55 dark:text-white 
       transition-colors duration-500 
       pt-24 md:pt-0"

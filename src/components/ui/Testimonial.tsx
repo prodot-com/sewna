@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { AnimatedTestimonials } from "@/components/magicui/animated-testimonials";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -42,10 +42,10 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="w-full py-24 bg-gradient-to-b from-white to-green-50 dark:from-black dark:to-neutral-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-10">
+    <section className="w-full bg-linear-to-bl from-gray-200 via-green-300 to-gray-200 dark:from-black/55 dark:via-green-900 dark:to-black/55">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-10">
         {/* Left Side Text */}
-        <div className="flex-1 space-y-6 text-center md:text-left">
+        <div className="flex flex-col space-y-6 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-tight">
             Real Stories. <br />
             <span className="text-[#00b67f]">Real Creations.</span>
@@ -57,7 +57,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Right Side Animated Testimonials */}
-        <div className="flex-1 w-full">
+        <div className="flex-1 w-full min-w-3xl">
           <AnimatedTestimonials testimonials={testimonials} />
         </div>
       </div>
